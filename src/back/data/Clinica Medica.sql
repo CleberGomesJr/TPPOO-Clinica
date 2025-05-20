@@ -1,45 +1,60 @@
-create database clinicamedica;
+CREATE DATABASE IF NOT EXISTS clinicaMedica;
+USE clinicaMedica;
 
-use clinicamedica;
-
-create table if not exists Medico(
-nomeCompleto varchar(100) not null,
-sexo varchar(15) not null,
-dataNascimento date not null,
-telefone varchar(15) not null,
-email varchar(50) not null,
-crm varchar(25) not null primary key,
-especialidade varchar(25) not null
+-- Tabela Base: Pessoa 
+CREATE TABLE Pessoa(
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+    nomeCompleto VARCHAR(100) NOT NULL,
+    sexo VARCHAR(15) NOT NULL,
+    dataNascimento DATE NOT NULL,
+    telefone VARCHAR(15) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    cpf VARCHAR(14) NOT NULL
 )default charset utf8mb4;
 
-create table if not exists Paciente(
-nomeCompleto varchar(100) not null,
-sexo varchar(15) not null,
-dataNascimento date not null,
-telefone varchar(15) not null,
-email varchar(50) not null,
-cpf varchar(11) not null,
-numeroCarteirinha int not null primary key
+-- Tabela Médico (Herança de Pessoa)
+CREATE TABLE Medico(
+	Id INT PRIMARY KEY,
+    crm INT NOT NULL UNIQUE,
+    especialidade VARCHAR(25) NOT NULL,
+    foreign key (Id) REFERENCES Pessoa(Id) ON DELETE CASCADE 
 )default charset utf8mb4;
 
-create table if not exists statusConsulta(
-numeroProtocolo int not null primary key,
-statusConsulta varchar(15)
+-- Tabela Paciente (Também herda de pessoa)
+CREATE TABLE Paciente(
+	Id INT PRIMARY KEY,
+    numeroCarteirinha INT NOT NULL UNIQUE,
+    foreign key (Id) REFERENCES Pessoa(Id) ON DELETE CASCADE
 )default charset utf8mb4;
 
-create table if not exists Consulta(
-crm varchar(25) not null,
-numeroCarteirinha int not null,
-dataConsulta date not null,
-statusConsulta int not null,
-foreign key (statusConsulta) references statusConsulta (numeroProtocolo),
-foreign key (crm) references Medico (crm),
-foreign key (numeroCarteirinha) references Paciente (numeroCarteirinha),
-primary key (crm,numeroCarteirinha)
+-- Tabela Status consulta (vai possuir dados de status: cancelada, confirmada, marcada, etc)
+-- TABELA BASE PARA AS CONSULTAS E REFERÊNCIAS DA TABELA CONSULTA
+CREATE TABLE statusConsulta(
+	numeroProtocolo INT PRIMARY KEY,
+    statusConsulta varchar(15)
+)default charset utf8mb4;
+-- Tabela Consulta, utiliza dados das tabelas médico/paciente e status consulta
+CREATE TABLE Consulta(
+	Id INT AUTO_INCREMENT PRIMARY KEY,
+    medicoId INT NOT NULL,
+    crm INT NOT NULL UNIQUE,
+    pacienteId INT NOT NULL,
+    numeroCarteirinha INT NOT NULL UNIQUE,
+    dataConsulta DATE NOT NULL,
+    statusConsulta INT NOT NULL,
+    descricao VARCHAR(100),
+    foreign key (statusConsulta) REFERENCES statusConsulta(numeroProtocolo),
+    foreign key (medicoId) REFERENCES Medico(Id),
+    foreign key (pacienteId) REFERENCES Paciente(Id),
+    foreign key (crm) REFERENCES Medico(crm),
+    foreign key (numeroCarteirinha) REFERENCES Paciente(numeroCarteirinha)
 )default charset utf8mb4;
 
-INSERT INTO statusConsulta (numeroProtocolo,statusConsulta) VALUES (1,"Agendada");
-INSERT INTO statusConsulta (numeroProtocolo,statusConsulta) VALUES (2,"Confirmada");
-INSERT INTO statusConsulta (numeroProtocolo,statusConsulta) VALUES (3,"Em Aprovação");
-INSERT INTO statusConsulta (numeroProtocolo,statusConsulta) VALUES (4,"Concluída");
-INSERT INTO statusConsulta (numeroProtocolo,statusConsulta) VALUES (5,"Cancelada");
+INSERT INTO statusConsulta (numeroProtocolo, statusConsulta) VALUES 
+(1, "Agendada"),
+(2, "Em Aprovação"),
+(3, "Confirmada"),
+(4, "Concluída"),
+(5, "Cancelada");
+
+SELECT * FROM statusConsulta;
