@@ -1,6 +1,8 @@
+using 
+
 namespace ClinicaMedicaAPI.Data;
 
-public class AppDbContext
+public class AppDbContext:DbContext
 {
     
 }
