@@ -3,10 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicaMedicaAPI;
 
-public class Pessoa
+public class MedicoCreateDTO
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     
     [Column("nomeCompleto")]
@@ -27,18 +25,10 @@ public class Pessoa
     [Column("telefone")]
     public string numero { get; set; }
     
-    [NotMapped]
-    public int Idade
-    {
-        get
-        {
-            var hoje = DateTime.Today;
-            var idade = hoje.Year - dataNascimento.Year;
-
-            if (dataNascimento.Date > hoje.AddYears(-idade))
-                idade--;
-      
-            return idade;
-        }
-    }
+    [Column("crm")]
+    public int crm { get; set; }
+    
+    [Column("especialidade")]
+    public string especialidade { get; set; }
+    
 }

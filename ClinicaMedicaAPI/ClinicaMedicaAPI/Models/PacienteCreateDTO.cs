@@ -1,12 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicaMedicaAPI;
 
-public class Pessoa
+public class PacienteCreateDTO
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     
     [Column("nomeCompleto")]
@@ -27,18 +24,7 @@ public class Pessoa
     [Column("telefone")]
     public string numero { get; set; }
     
-    [NotMapped]
-    public int Idade
-    {
-        get
-        {
-            var hoje = DateTime.Today;
-            var idade = hoje.Year - dataNascimento.Year;
-
-            if (dataNascimento.Date > hoje.AddYears(-idade))
-                idade--;
-      
-            return idade;
-        }
-    }
+    [Column("numeroCarteirinha")]
+    public int numeroCarteirinha { get; set; }
+    
 }

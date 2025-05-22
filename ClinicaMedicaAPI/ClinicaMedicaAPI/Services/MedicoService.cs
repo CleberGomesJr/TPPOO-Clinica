@@ -1,8 +1,6 @@
-using System.Diagnostics;
 using ClinicaMedicaAPI.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.Diagnostics.Metrics;
+
 
 namespace ClinicaMedicaAPI.Services;
 
@@ -16,37 +14,33 @@ public class MedicoService
         _context = context;
     }
 
-    public bool Cadastrar (Medico medico)
+    public async Task Cadastrar(MedicoCreateDTO medico)
     {
-        try
+        var novoMedico = new Medico
         {
-            _context.Medicos.Add(medico);
-            _context.SaveChanges();
-            return true;
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-            return false;
-        }
+            dataNascimento = medico.dataNascimento,
+            nome = medico.nome,
+            cpf = medico.cpf,
+            numero = medico.numero,
+            email = medico.email,
+            sexo = medico.sexo,
+            Crm = medico.crm,
+            especialidade = medico.especialidade
+        };
+
+        _context.Medicos.Add(novoMedico);
+        await _context.SaveChangesAsync();
     }
     
-    /*public async Task<bool> Listar(MedicoDTO medicodto)
+    public async Task<List<MedicoDTO>> Listar()
     {
-        
-    }*/
-    
-   /*private ConsultaDTO MapConsultaToDto(Consulta consulta)
-    {
-        return new ConsultaDTO
+        return await _context.Medicos.Select(m => new MedicoDTO
         {
-            Crm = consulta.Medico.Crm,
-            DataConsulta = consulta.DataConsulta,
-            descricao = consulta.descricao,
-            statusConsultaId = consulta.StatusConsultaId,
-            numeroCarteirinha = consulta.Paciente.numeroCarteirinha
-        };
-    }*/
+            Crm = m.Crm,
+            especialidade = m.especialidade,
+            Nome = m.nome
+        }).ToListAsync();
+    }
     
     public async Task<List<ConsultaDTO>> ListarConsultasPorCrm(int crm)
     {
@@ -66,6 +60,32 @@ public class MedicoService
         return consultas;
     }
 
+    public async Task<bool> CancelarConsulta(int id)
+    {
+        var consulta = await _context.Consultas.FindAsync(id);
+        try
+        {
+            _context.Consultas.Remove(consulta ?? throw new NullReferenceException());
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        catch
+        {
+            Console.WriteLine("Não foi possível cancelar a consulta");
+            return false;
+        }
+    }
+
+    public async Task<bool> ConfirmarConsulta(int id)
+    {
+       var  consulta = await _context.Consultas.FindAsync(id);
+       if(consulta == null) return false;
+
+       consulta.StatusConsultaId = 2;
+       _context.Consultas.Update(consulta);
+       await _context.SaveChangesAsync();
+       return true;
+    }
     
     public async Task<(bool Sucesso, string Mensagem)> MarcarConsulta(ConsultaCreateDTO dto)
     {
@@ -78,6 +98,8 @@ public class MedicoService
 
         var consulta = new Consulta
         {
+            MedicoId = dto.medicoId,
+            PacienteId = dto.pacienteId,
             Crm = dto.Crm,
             numeroCarteirinha = dto.numeroCarteirinha,
             DataConsulta = dto.DataConsulta,
@@ -86,10 +108,8 @@ public class MedicoService
         };
 
         _context.Consultas.Add(consulta); 
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return (true, "Consulta criada.");
     }
-
-
 }

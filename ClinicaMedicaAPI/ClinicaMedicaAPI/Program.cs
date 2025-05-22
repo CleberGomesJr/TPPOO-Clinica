@@ -21,6 +21,7 @@ builder.Services.AddDbContext<ClinicaContext>(options =>
     ));
 
 builder.Services.AddScoped<MedicoService>();
+builder.Services.AddScoped<PacienteService>();
 
 var app = builder.Build();
 

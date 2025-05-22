@@ -16,23 +16,24 @@ public class ClinicaContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Pessoa>().ToTable("Pessoa");
-        modelBuilder.Entity<Medico>().ToTable("Medico")
-            .HasOne(m => m.Pessoa)
-            .WithOne()
-            .HasForeignKey<Pessoa>(m => m.Id)
-            .OnDelete(DeleteBehavior.Cascade);
-        
-        modelBuilder.Entity<Paciente>().ToTable("Paciente")
-            .HasOne(p => p.Pessoa)
-            .WithOne()
-            .HasForeignKey<Paciente>(p => p.Id)
-            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Medico>().ToTable("Medico");
+        modelBuilder.Entity<Paciente>().ToTable("Paciente");
 
         modelBuilder.Entity<Consulta>().ToTable("Consulta")
             .HasOne(c => c.Paciente)
             .WithMany()
-            .HasForeignKey(c => c.PacienteId);
+            .HasForeignKey(c => c.PacienteId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<Consulta>()
+            .HasOne(c => c.Medico)
+            .WithMany()
+            .HasForeignKey(c => c.MedicoId)
+            .OnDelete(DeleteBehavior.Restrict);
+
         modelBuilder.Entity<StatusConsulta>().ToTable("statusConsulta")
-            .HasKey(sc =>sc.Id);
+            .HasKey(sc => sc.Id);
     }
+
 }
