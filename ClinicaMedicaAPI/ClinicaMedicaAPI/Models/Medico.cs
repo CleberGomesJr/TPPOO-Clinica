@@ -15,7 +15,4 @@ public class Medico:Pessoa
     
     [Column("especialidade")]
     public string especialidade { get; set; }
-
-    [ForeignKey("Id")]
-    public Pessoa Pessoa { get; set; } = null;
 }

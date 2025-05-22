@@ -9,6 +9,7 @@ public class StatusConsulta
     [Key]
     [Column("numeroProtocolo")]
     public int Id { get; set; }
+    
     [Column("descricao")]
-    public string descricao { get; set; } = string.Empty;
+    public string descricao { get; set; }
 }
