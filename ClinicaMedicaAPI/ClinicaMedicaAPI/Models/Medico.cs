@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicaMedicaAPI;
 
+//Mesma coisa da classe consulta, porém agora referente aos médicos.
 [Table("Medico")]
 public class Medico:Pessoa
 {

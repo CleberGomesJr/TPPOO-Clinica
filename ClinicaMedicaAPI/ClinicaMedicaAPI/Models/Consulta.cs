@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClinicaMedicaAPI;
 
+/*
+    Classe geral das consultas, traz todos os dados que estão presentes no banco de dados
+ */
+
 [Table("Consulta")]
 public class Consulta
 {

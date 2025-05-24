@@ -16,6 +16,11 @@ public class MedicoService
 
     public async Task Cadastrar(MedicoCreateDTO medico)
     {
+        var cpfExiste = await  _context.Medicos.AnyAsync(m => m.cpf == medico.cpf);
+
+        if (cpfExiste)
+            throw new Exception("CPF já cadastrado para outro usuário, tente novamente");
+        
         var novoMedico = new Medico
         {
             dataNascimento = medico.dataNascimento,
@@ -89,6 +94,13 @@ public class MedicoService
     
     public async Task<(bool Sucesso, string Mensagem)> MarcarConsulta(ConsultaCreateDTO dto)
     {
+        bool horarioOcupado = await _context.Consultas.AnyAsync
+            (c => c.Crm == dto.Crm && c.DataConsulta == dto.DataConsulta);
+
+        if (horarioOcupado)
+            throw new Exception(
+                $"O médico portador do crm {dto.Crm} já possui uma consulta agendada para esse horário.");
+        
         var consultasNoDia = await _context.Consultas
             .Where(c => c.Crm == dto.Crm && c.DataConsulta.Date == dto.DataConsulta.Date)
             .CountAsync();
@@ -112,4 +124,36 @@ public class MedicoService
 
         return (true, "Consulta criada.");
     }
+
+    public async Task<List<ConsultaDTO>> ListarConsultas()
+    {
+        return await _context.Consultas.Select(m => new ConsultaDTO
+        {
+            Id = m.Id,
+            Crm = m.Crm,
+            numeroCarteirinha = m.numeroCarteirinha,
+            DataConsulta = m.DataConsulta,
+            statusConsultaId = m.StatusConsultaId,
+            descricao = m.descricao,
+        }).ToListAsync();
+    }
+
+    public async Task<ConsultaDTO?> ObterDadosDaConsulta(int id)
+    {
+        var consulta = await _context.Consultas.FindAsync(id);
+
+        if (consulta == null)
+            return null;
+
+        return new ConsultaDTO
+        {
+            Id = consulta.Id,
+            Crm = consulta.Crm,
+            numeroCarteirinha = consulta.numeroCarteirinha,
+            DataConsulta = consulta.DataConsulta,
+            statusConsultaId = consulta.StatusConsultaId,
+            descricao = consulta.descricao,
+        };
+    }
+
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vitin\\RiderProjects\\TPPOO-Clinica\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj": {}
+    "C:\\Users\\vitin\\OneDrive\\Área de Trabalho\\Projetos\\c#\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vitin\\RiderProjects\\TPPOO-Clinica\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj": {
+    "C:\\Users\\vitin\\OneDrive\\Área de Trabalho\\Projetos\\c#\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vitin\\RiderProjects\\TPPOO-Clinica\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\vitin\\OneDrive\\Área de Trabalho\\Projetos\\c#\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj",
         "projectName": "ClinicaMedicaAPI",
-        "projectPath": "C:\\Users\\vitin\\RiderProjects\\TPPOO-Clinica\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj",
+        "projectPath": "C:\\Users\\vitin\\OneDrive\\Área de Trabalho\\Projetos\\c#\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\ClinicaMedicaAPI.csproj",
         "packagesPath": "C:\\Users\\vitin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vitin\\RiderProjects\\TPPOO-Clinica\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\obj\\",
+        "outputPath": "C:\\Users\\vitin\\OneDrive\\Área de Trabalho\\Projetos\\c#\\ClinicaMedicaAPI\\ClinicaMedicaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
