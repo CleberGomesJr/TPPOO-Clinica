@@ -17,8 +17,13 @@ public class ClinicaContext : DbContext
     {
         modelBuilder.Entity<Pessoa>().ToTable("Pessoa");
 
-        modelBuilder.Entity<Medico>().ToTable("Medico");
-        modelBuilder.Entity<Paciente>().ToTable("Paciente");
+        modelBuilder.Entity<Medico>().ToTable("Medico")
+            .HasIndex(m => m.cpf)
+            .IsUnique();
+        
+        modelBuilder.Entity<Paciente>().ToTable("Paciente")
+            .HasIndex(p => p.cpf)
+            .IsUnique();
 
         modelBuilder.Entity<Consulta>().ToTable("Consulta")
             .HasOne(c => c.Paciente)

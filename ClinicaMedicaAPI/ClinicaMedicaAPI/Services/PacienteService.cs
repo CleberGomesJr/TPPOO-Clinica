@@ -16,6 +16,11 @@ public class PacienteService
     
     public async Task Cadastrar(PacienteCreateDTO paciente)
     {
+        var cpfExistente = await _context.Pacientes.AnyAsync(p => p.cpf == paciente.cpf);
+
+        if (cpfExistente)
+            throw new Exception("Esse CPF já está cadastrado para outro usuário, tente novamente.");
+        
         var novoPaciente = new Paciente
         {
             dataNascimento = paciente.dataNascimento,
@@ -38,6 +43,7 @@ public class PacienteService
             nome = p.nome,
             numeroCarteirinha = p.numeroCarteirinha,
             cpf = p.cpf,
+            
         }).ToListAsync();
     }
 

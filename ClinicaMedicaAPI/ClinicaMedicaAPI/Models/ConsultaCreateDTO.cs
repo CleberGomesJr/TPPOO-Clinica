@@ -2,6 +2,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicaMedicaAPI;
 
+// Classe com os atributos necessários para criar uma consulta, não possui dados por mera convenção de uso
+
 public class ConsultaCreateDTO
 {
     public int medicoId  { get; set; }
