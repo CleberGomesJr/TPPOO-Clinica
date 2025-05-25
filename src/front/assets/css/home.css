@@ -17,40 +17,6 @@ body {
     margin: auto;
 }
 
-/* Header */
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-}
-
-header h1 {
-    float: left;
-    margin-left: 20px;
-}
-
-header nav ul {
-    list-style: none;
-    float: right;
-    margin-right: 20px;
-}
-
-header nav ul li {
-    display: inline;
-    margin-left: 15px;
-}
-
-header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-header::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
 /* Hero */
 .hero {
     background: #007BFF;
@@ -92,12 +58,4 @@ header::after {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Footer */
-footer {
-    background: #222;
-    color: #ccc;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-}
 
