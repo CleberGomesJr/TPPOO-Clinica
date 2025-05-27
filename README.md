@@ -17,7 +17,7 @@ Linguagem de Programação: C#
 
 Banco de Dados: MySQL
 
-Interface Gráfica: HTML5 + CSS + ASPNET
+Interface Gráfica: HTML5 + CSS + JS
 
 # 📌 Objetivo do Projeto:
 Desenvolver um sistema completo de gestão de consultas médicas para uma clínica, aplicando os princípios da Programação Orientada a Objetos (POO). O sistema deve oferecer funcionalidades para:
