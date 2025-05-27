@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicos</title>
+    <link rel="stylesheet" href="/TPPOO-Clinica/src/front/assets/css/medicos.css">
 </head>
+
 <body>
     <div id="header"></div>
+    <h1>Lista dos Médicos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CRM</th>
+                <th>Especialidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Dra. Ana Silva</td>
+                <td>123456/SP</td>
+                <td>Cardiologia</td>
+            </tr>
+            <tr>
+                <td>Dr. João Pereira</td>
+                <td>654321/RJ</td>
+                <td>Ortopedia</td>
+            </tr>
+            <tr>
+                <td>Dra. Marina Costa</td>
+                <td>789012/MG</td>
+                <td>Pediatria</td>
+            </tr>
+            <!-- Adicione mais médicos aqui -->
+        </tbody>
+    </table>
     <div id="footer"></div>
 
     <script>
@@ -19,4 +50,5 @@
             .then(data => document.getElementById('footer').innerHTML = data);
     </script>
 </body>
+
 </html>
