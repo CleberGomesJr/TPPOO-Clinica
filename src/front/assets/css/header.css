@@ -1,0 +1,33 @@
+header {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header h1 {
+    color: #fff;
+    float: left;
+    margin-left: 20px;
+}
+
+header nav ul {
+    list-style: none;
+    float: right;
+    margin-right: 20px;
+}
+
+header nav ul li {
+    display: inline;
+    margin-left: 15px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+header::after {
+    content: "";
+    display: table;
+    clear: both;
+}

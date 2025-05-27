@@ -40,7 +40,7 @@ public class ClinicaMedicaController : ControllerBase
 
     /*Método utilizado para cadastrar médicos no banco de dados, esse FromBody mostra pra api que os dados que serão
      enviados para o banco serão recebidos do corpo da requisição, ou seja, do front-end*/ 
-    [HttpPost("medicos")]
+    [HttpPost("medicos/cadastrar")]
     public async Task<IActionResult> CadastrarMedico([FromBody] MedicoCreateDTO medico)
     {
         try
@@ -54,7 +54,7 @@ public class ClinicaMedicaController : ControllerBase
         }
     }
     //Método de listar todos os médicos cadastrados no banco de dados.
-    [HttpGet("medicos")]
+    [HttpGet("medicos/listar")]
     public async Task<IActionResult> ListarMedicos()
     {
         try
@@ -68,7 +68,7 @@ public class ClinicaMedicaController : ControllerBase
         }
     }
     //Método para buscar as consultas de acordo com o número do Crm do médico.
-    [HttpGet("medicos/{crm}/consultas")]
+    [HttpGet("medicos/{crm}/buscarConsultas")]
     public async Task<IActionResult> GetConsultasPorCrm(int crm)
     {
         try
@@ -88,7 +88,7 @@ public class ClinicaMedicaController : ControllerBase
 
     // MÉTODOS PARA CONSULTAS
     //Método para criar consultas, segue a mesma lógica do método de criar médicos.
-    [HttpPost("consultas")]
+    [HttpPost("consultas/cadastrar")]
     public async Task<IActionResult> CadastrarConsulta([FromBody] ConsultaCreateDTO consulta)
     {
         try
@@ -148,7 +148,7 @@ public class ClinicaMedicaController : ControllerBase
         }
     }
     //Método para apagar a consulta do banco de dados
-    [HttpDelete("consultas/{id}")]
+    [HttpDelete("consultas/{id}/cancelar")]
     public async Task<IActionResult> CancelarConsulta(int id)
     {
         try
@@ -165,7 +165,7 @@ public class ClinicaMedicaController : ControllerBase
     // MÉTODOS PARA OS PACIENTES
     
     //Método para cadastrar paciente, segue a mesma lógica dos outros métodos de cadastro. 
-    [HttpPost("pacientes")]
+    [HttpPost("pacientes/cadastrar")]
     public async Task<IActionResult> CadastrarPaciente([FromBody] PacienteCreateDTO paciente)
     {
         try
@@ -179,7 +179,7 @@ public class ClinicaMedicaController : ControllerBase
         }
     }
     // Método para listar todos os pacientes do banco de dados
-    [HttpGet("pacientes")]
+    [HttpGet("pacientes/listar")]
     public async Task<IActionResult> ListarPacientes()
     {
         try
@@ -193,7 +193,7 @@ public class ClinicaMedicaController : ControllerBase
         }
     }
     // Método para listar as consultas de acordo com o número da carteirinha do cliente.
-    [HttpGet("pacientes/{numeroCarteirinha}/consultas")]
+    [HttpGet("pacientes/{numeroCarteirinha}/listarConsultas")]
     public async Task<IActionResult> ListarConsultasPaciente(int numeroCarteirinha)
     {
         try
