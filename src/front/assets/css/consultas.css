@@ -1,3 +1,4 @@
+/* Corpo da página */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -7,25 +8,43 @@ body {
     min-height: 100vh;
 }
 
+/* Título */
 h1 {
     color: #2c3e50;
+    text-align: center;
+    margin-top: 2rem;
 }
 
+/* Container centralizador */
+#Formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    flex: 1;
+}
 
-form {
+/* Formulário */
+#form-consulta {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 8px;
     max-width: 400px;
+    width: 100%;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Rótulos */
 label {
     display: block;
     margin-top: 1rem;
 }
 
+/* Campos de entrada e seleção */
 input,
 select {
     width: 100%;
@@ -35,6 +54,7 @@ select {
     border-radius: 4px;
 }
 
+/* Botão */
 button {
     margin-top: 1.5rem;
     background-color: #3498db;
@@ -43,12 +63,17 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #2980b9;
 }
 
+/* Rodapé fixado ao final da página */
 #footer {
-    margin-top: auto; 
+    margin-top: auto;
+    background-color: #ddd;
+    
+    text-align: center;
 }
