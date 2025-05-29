@@ -1,45 +1,86 @@
+/* Corpo da página */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+/* Título */
 h1 {
     color: #2c3e50;
+    text-align: center;
+    margin-top: 2rem;
 }
 
-form {
+/* Container centralizador */
+#Formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    flex: 1;
+}
+
+/* Formulário */
+#form-consulta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #fff;
     padding: 1.5rem;
     border-radius: 8px;
-    max-width: 400px;
+    width: 50%;
+    max-width: 500px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Rótulos */
 label {
     display: block;
     margin-top: 1rem;
+    font-weight: bold;
 }
 
+/* Campos de entrada, seleção e botão */
+input,
+select,
+button {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Inputs e selects (estilo padrão) */
 input,
 select {
-    width: 100%;
-    padding: 0.5rem;
-    margin-top: 0.3rem;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    background-color: #fff;
 }
 
+/* Botão */
 button {
-    margin-top: 1.5rem;
     background-color: #3498db;
     color: white;
-    padding: 0.6rem;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
     background-color: #2980b9;
+}
+
+/* Rodapé fixado ao final da página */
+#footer {
+    margin-top: auto;
+    background-color: #ddd;
+    text-align: center;
 }
