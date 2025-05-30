@@ -1,33 +1,43 @@
+.containerheader {
+    max-width: 1200px;
+    margin: 0 auto;            
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
 header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
+    background: #212529;
+    color: #2973B2;
 }
 
 header h1 {
-    color: #fff;
-    float: left;
-    margin-left: 20px;
+    color: #f8f9fa;
+    margin: 0;
 }
 
 header nav ul {
     list-style: none;
-    float: right;
-    margin-right: 20px;
-}
-
-header nav ul li {
-    display: inline;
-    margin-left: 15px;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
 }
 
-header::after {
-    content: "";
-    display: table;
-    clear: both;
+header nav ul li a:hover {
+    text-decoration: underline; 
+}
+
+header a{
+    text-decoration: none;
+}
+header h1:hover{
+    text-decoration: underline; /* sublinhado ao passar o mouse */
 }
