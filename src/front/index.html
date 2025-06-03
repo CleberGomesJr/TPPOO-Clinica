@@ -7,7 +7,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="/src/front/assets/css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -23,16 +23,45 @@
     </section>
 
     <!-- Sobre -->
-     <section>
+    <section>
         <div class="Sobre">
-            
+            <h2>Sobre o Projeto</h2>
+            <p>
+                Este projeto tem como objetivo o desenvolvimento de um sistema completo de gestão de consultas médicas
+                para uma clínica, utilizando os princípios da Programação Orientada a Objetos (POO).
+            </p>
+
+            <h3>Integrantes da Equipe</h3>
+            <div class="equipe">
+                <div class="membro">
+                    <img src="/src/front/assets/img/Bruno.jpeg" alt="Foto de Bruno Gustavo Rezende">
+                    <p>Bruno Gustavo Rezende</p>
+                </div>
+                <div class="membro">
+                    <img src="/src/front/assets/img/Caio.png" alt="Foto de Caio Henrique Queiroz dos Santos">
+                    <p>Caio Henrique Queiroz</p>
+                </div>
+                <div class="membro">
+                    <img src="/src/front/assets/img/Cleber.png" alt="Foto de Cleber Gomes Junior">
+                    <p>Cleber Gomes Junior</p>
+                </div>
+                <div class="membro">
+                    <img src="/src/front/assets/img/Eric.jpeg" alt="Foto de Eric Carvalho Pedro">
+                    <p>Eric Carvalho Pedro</p>
+                </div>
+
+                <div class="membro">
+                    <img src="/src/front/assets/img/Victor.png" alt="Foto de Victor Lucas de Ângela Martins">
+                    <p>Victor Lucas de Ângela</p>
+                </div>
+            </div>
         </div>
-     </section>
+    </section>
 
     <!-- Serviços -->
     <section class="servicos" id="servicos">
         <div class="container">
-            <h2>Nossos Serviços</h2>
+            <h2>Sobre o Sistema</h2>
             <div class="cards">
                 <div class="card">
                     <img src="/src/front/assets/img/add.png" alt="">
@@ -64,19 +93,32 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Navegação -->
     <section class="acesso-rapido">
         <div class="container">
             <h2>Navegue pelo Sistema</h2>
             <div class="links-sistema">
-                <a href="/src/front/pages/medicos.html" class="link-box">Médicos</a>
-                <a href="/src/front/pages/pacientes.html" class="link-box">Pacientes</a>
-                <a href="/src/front/pages/consultas.html" class="link-box">Consultas</a>
-                <a href="/src/front/pages/historico.html" class="link-box">Histórico de Atendimentos</a>
+                <a href="/src/front/pages/medicos.html" class="link-box">
+                    <i class="fas fa-user-md"></i>
+                    <span>Médicos</span>
+                </a>
+                <a href="/src/front/pages/pacientes.html" class="link-box">
+                    <i class="fas fa-user-injured"></i>
+                    <span>Pacientes</span>
+                </a>
+                <a href="/src/front/pages/consultas.html" class="link-box">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Consultas</span>
+                </a>
+                <a href="/src/front/pages/historico.html" class="link-box">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <span>Histórico</span>
+                </a>
             </div>
         </div>
     </section>
+
 
     <div id="footer"></div>
 
@@ -85,7 +127,7 @@
             .then(res => res.text())
             .then(data => document.getElementById('header').innerHTML = data);
 
-        fetch('components/footer.html')
+        fetch('/src/front/components/footer.html')
             .then(res => res.text())
             .then(data => document.getElementById('footer').innerHTML = data);
     </script>
