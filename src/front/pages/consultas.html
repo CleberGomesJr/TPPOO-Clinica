@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas</title>
+    <script src="/src/front/assets/js/consultas.js"></script>
+    <link rel="stylesheet" href="/src/front/assets/css/consultas.css">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div id="Formulario">
+        <h1>Agendamento de Consulta</h1>
+        <form id="form-consulta">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" required />
+
+            <label for="especialidade">Especialidade:</label>
+            <select id="especialidade" required>
+                <option value="">Selecione</option>
+                <option>Clínico Geral</option>
+                <option>Cardiologia</option>
+                <option>Dermatologia</option>
+                <option>Ortopedia</option>
+            </select>
+
+            <label for="data">Data:</label>
+            <input type="date" id="data" required />
+
+            <label for="hora">Horário (08:00 às 18:00):</label>
+            <input type="time" id="hora" required />
+
+            <button type="submit">Agendar Consulta</button>
+        </form>
+    </div>
+
+    <div id="footer"></div>
+    <script>
+        fetch('../components/header.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('../components/footer.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+
+</html>

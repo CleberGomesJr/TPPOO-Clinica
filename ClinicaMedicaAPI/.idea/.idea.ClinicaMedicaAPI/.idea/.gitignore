@@ -1,0 +1,29 @@
+# Ignora arquivos de build .NET
+**/bin/
+**/obj/
+
+# Rider (JetBrains) - ignora toda a pasta .idea e subpastas
+.idea/
+*.iml
+
+# Configurações locais do Rider
+*.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+/shelf/
+/workspace.xml
+/modules.xml
+/projectSettingsUpdater.xml
+/contentModel.xml
+
+# VSCode (caso alguém use)
+.vscode/
+
+# Arquivos temporários e de usuário
+*.log
+*.tmp
+*.user
+*.suo
+*.userosscache
+*.sln.docstates

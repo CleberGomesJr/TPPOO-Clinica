@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="/src/front/assets/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Bem-vindo à Clínica Médica</h2>
+            <p>Trabalho Prático de Programação Orientada por Objetos</p>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+     <section>
+        <div class="Sobre">
+            
+        </div>
+     </section>
+
+    <!-- Serviços -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="/src/front/assets/img/add.png" alt="">
+                    <h3>Cadastro de Médicos e Pacientes</h3>
+                    <p>Gerencie profissionais da saúde e seus pacientes com facilidade.</p>
+                </div>
+                <div class="card">
+                    <img src="/src/front/assets/img/list.png" alt="">
+                    <h3>Agendamento de Consultas</h3>
+                    <p>Marque atendimentos com validação automática de horários disponíveis.</p>
+                </div>
+                <div class="card">
+                    <img src="/src/front/assets/img/time.png" alt="">
+                    <h3>Histórico de Atendimentos</h3>
+                    <p>Acompanhe o histórico completo de consultas e diagnósticos.</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="/src/front/assets/img/magnifying-glass.png" alt="">
+                    <h3>Interface Amigável</h3>
+                    <p>Navegação simples e intuitiva para todos os tipos de usuários.</p>
+                </div>
+                <div class="card">
+                    <img src="/src/front/assets/img/server.png" alt="">
+                    <h3>Integração com Banco de Dados</h3>
+                    <p>Armazenamento seguro e confiável de todas as informações do sistema.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Navegação -->
+    <section class="acesso-rapido">
+        <div class="container">
+            <h2>Navegue pelo Sistema</h2>
+            <div class="links-sistema">
+                <a href="/src/front/pages/medicos.html" class="link-box">Médicos</a>
+                <a href="/src/front/pages/pacientes.html" class="link-box">Pacientes</a>
+                <a href="/src/front/pages/consultas.html" class="link-box">Consultas</a>
+                <a href="/src/front/pages/historico.html" class="link-box">Histórico de Atendimentos</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+        fetch('components/header.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('components/footer.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</body>
+
+</html>
