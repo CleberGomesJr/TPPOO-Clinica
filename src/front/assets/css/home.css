@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -23,11 +27,22 @@ div.body-content {
 
 /* Hero */
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
 .hero {
     background: #adb5bd;
     color: white;
     padding: 100px 0;
     text-align: center;
+}
+
+.hero img{
+    width: 10%;
+    animation: pulse 3s infinite;
 }
 
 .hero h2 {
@@ -95,7 +110,7 @@ div.body-content {
     margin-top: 20px;
 }
 
-h3{
+h3 {
     margin-top: 25px;
 }
 
@@ -120,47 +135,47 @@ h3{
 /* Navegação */
 
 .acesso-rapido {
-  padding: 40px 20px;
-  text-align: center;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 .acesso-rapido h2 {
-  font-size: 2em;
-  margin-bottom: 30px;
-  color: #333;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 .links-sistema {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .link-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 160px;
-  height: 160px;
-  background-color: #e9ecef;
-  border: 1px solid #212529;
-  border-radius: 12px;
-  text-decoration: none;
-  color: #212529;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+    background-color: #e9ecef;
+    border: 1px solid #212529;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #212529;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .link-box:hover {
-  background-color: #212529;
-  color: white;
-  transform: translateY(-5px);
+    background-color: #212529;
+    color: white;
+    transform: translateY(-5px);
 }
 
 .link-box i {
-  font-size: 2.5em;
-  margin-bottom: 10px;
+    font-size: 2.5em;
+    margin-bottom: 10px;
 }
