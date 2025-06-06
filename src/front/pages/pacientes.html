@@ -8,7 +8,14 @@
 </head>
 <body>
     <div id="header"></div>
+
     <h1>Lista dos Pacientes</h1>
+
+    <div class="acoes-paciente">
+        <button id="adicionar-paciente">Adicionar Paciente</button>
+        <input type="text" id="pesquisar-paciente" placeholder="Pesquisar paciente...">
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -19,49 +26,46 @@
                 <th>CPF</th>
                 <th>Telefone</th>
                 <th>Email</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>Maria Oliveira</td>
-                <td>0012456</td>
-                <td>Feminino</td>
-                <td>12/03/1985</td>
-                <td>123.456.789-00</td>
-                <td>(11) 91234-5678</td>
-                <td>maria.oliveira@email.com</td>
-            </tr>
-            <tr>
-                <td>Carlos Silva</td>
-                <td>0078901</td>
-                <td>Masculino</td>
-                <td>05/07/1978</td>
-                <td>987.654.321-00</td>
-                <td>(21) 99876-5432</td>
-                <td>carlos.silva@email.com</td>
-            </tr>
-            <tr>
-                <td>Fernanda Costa</td>
-                <td>0032123</td>
-                <td>Feminino</td>
-                <td>22/11/1990</td>
-                <td>456.789.123-00</td>
-                <td>(31) 98765-4321</td>
-                <td>fernanda.costa@email.com</td>
-            </tr>
-            <!-- Adicione mais pacientes conforme necessário -->
+        <tbody id="tabela-pacientes">
+            <!-- Pacientes fixos ou renderizados dinamicamente -->
         </tbody>
     </table>
+
     <div id="footer"></div>
     
-    <script>
-        fetch('../components/header.html')
-            .then(res => res.text())
-            .then(data => document.getElementById('header').innerHTML = data);
-
-        fetch('../components/footer.html')
-            .then(res => res.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
-    </script>
+    <div id="modal-paciente" class="modal">
+        <div class="modal-content">
+            <h2>Adicionar Paciente</h2>
+            <form id="form-paciente">
+                <label>Nome:</label>
+                <input type="text" required>
+                <label>Nº Carteirinha:</label>
+                <input type="text" required>
+                <label>Sexo:</label>
+                <select required>
+                    <option value="">Selecione</option>
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Outro</option>
+                </select>
+                <label>Data de Nascimento:</label>
+                <input type="date" required>
+                <label>CPF:</label>
+                <input type="text" required>
+                <label>Telefone:</label>
+                <input type="text" required>
+                <label>Email:</label>
+                <input type="email" required>
+                <div class="actions">
+                    <button type="button" id="cancelar-modal">Cancelar</button>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/src/front/assets/js/paciente.js"></script>
 </body>
 </html>
