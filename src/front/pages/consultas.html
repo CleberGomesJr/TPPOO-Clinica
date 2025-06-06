@@ -5,48 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultas</title>
-    <script src="/src/front/assets/js/consultas.js"></script>
     <link rel="stylesheet" href="/src/front/assets/css/consultas.css">
 </head>
 
 <body>
     <div id="header"></div>
+    <h1>Lista de Consultas</h1>
 
-    <div id="Formulario">
-        <h1>Agendamento de Consulta</h1>
-        <form id="form-consulta">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" required />
-
-            <label for="especialidade">Especialidade:</label>
-            <select id="especialidade" required>
-                <option value="">Selecione</option>
-                <option>Clínico Geral</option>
-                <option>Cardiologia</option>
-                <option>Dermatologia</option>
-                <option>Ortopedia</option>
-            </select>
-
-            <label for="data">Data:</label>
-            <input type="date" id="data" required />
-
-            <label for="hora">Horário (08:00 às 18:00):</label>
-            <input type="time" id="hora" required />
-
-            <button type="submit">Agendar Consulta</button>
-        </form>
+    <div class="acoes-consulta">
+        <button id="adicionar-consulta">Agendar Consulta</button>
+        <input type="text" id="pesquisar-consulta" placeholder="Pesquisar Consulta...">
     </div>
 
-    <div id="footer"></div>
-    <script>
-        fetch('../components/header.html')
-            .then(res => res.text())
-            .then(data => document.getElementById('header').innerHTML = data);
+    <table>
+        <thead>
+            <tr>
+                <th>Número Protocolo</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Nº Carteirinha</th>
+                <th>CRM</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-consultas">
+            <!-- Médicos fixos ou renderizados dinamicamente -->
+        </tbody>
+    </table>
 
-        fetch('../components/footer.html')
-            .then(res => res.text())
-            .then(data => document.getElementById('footer').innerHTML = data);
-    </script>
+    <div id="footer"></div>
+
+    <div id="modal-consulta" class="modal">
+    <div class="modal-content">
+        <h2>Agendar Consulta</h2>
+        <form id="form-consulta">
+            <label>Número Protocolo:</label>
+            <input type="text" id="protocolo" required>
+
+            <label>CRM:</label>
+            <input type="text" id="crm" required>
+
+            <label>Status:</label>
+            <input type="text" id="status" required>
+
+            <label>CPF:</label>
+            <input type="text" id="cpf" required>
+
+            <label>Data:</label>
+            <input type="date" id="dataConsulta" required>
+
+            <div class="actions">
+                <button type="button" id="cancelar-modal">Cancelar</button>
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    <script src="/src/front/assets/js/consultas.js"></script>
 </body>
 
 </html>
