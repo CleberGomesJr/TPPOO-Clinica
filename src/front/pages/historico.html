@@ -1,11 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historico</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historico</title>
+  <link rel="stylesheet" href="/src/front/assets/css/historico.css">
+  <script src="/src/front/assets/js/historico.js"></script>
 </head>
+
 <body>
-    
+  <div id="header"></div>
+  <h1>Histórico de Atendimentos</h1>
+
+  <table id="tabela-historico">
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Especialidade</th>
+        <th>Data</th>
+        <th>Horário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Lançar o histórico AQ -->
+    </tbody>
+  </table>
+
+  <div id="footer"></div>
+  <script>
+    fetch('../components/header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+
+    fetch('../components/footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
 </body>
+
 </html>

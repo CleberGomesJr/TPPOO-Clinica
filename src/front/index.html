@@ -4,61 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>HorusMed</title>
+    <link rel="stylesheet" href="/src/front/assets/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Exo&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1>Clínica Médica</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Serviços</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+
+    <div id="header"></div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h2>Bem-vindo à Clínica Médica</h2>
-            <p>Oferecemos soluções modernas para o seu negócio.</p>
-            <a href="#servicos" class="btn">Saiba Mais</a>
-        </div>
-    </section>
-
-    <!-- Serviços -->
-    <section class="servicos" id="servicos">
-        <div class="container">
-            <h2>Nossos Serviços</h2>
-            <div class="cards">
-                <div class="card">
-                    <h3>Cadastro de Médicos e Pacientes</h3>
-                    <p>Gerencie profissionais da saúde e seus pacientes com facilidade.</p>
-                </div>
-                <div class="card">
-                    <h3>Agendamento de Consultas</h3>
-                    <p>Marque atendimentos com validação automática de horários disponíveis.</p>
-                </div>
-                <div class="card">
-                    <h3>Histórico de Atendimentos</h3>
-                    <p>Acompanhe o histórico completo de consultas e diagnósticos.</p>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="card">
-                    <h3>Interface Amigável</h3>
-                    <p>Navegação simples e intuitiva para todos os tipos de usuários.</p>
-                </div>
-                <div class="card">
-                    <h3>Integração com Banco de Dados</h3>
-                    <p>Armazenamento seguro e confiável de todas as informações do sistema.</p>
-                </div>
-            </div>
+            <img src="/src/front/assets/img/Hero.png" alt="">
+            <h2>Bem-vindo ao HorusMed</h2>
+            <p>Trabalho Prático de Programação Orientada por Objetos</p>
         </div>
     </section>
 
@@ -67,20 +28,109 @@
         <div class="container">
             <h2>Navegue pelo Sistema</h2>
             <div class="links-sistema">
-                <a href="/TPPOO-Clinica/src/front/pages/consultas.html" class="link-box">Médicos</a>
-                <a href="/TPPOO-Clinica/src/front/pages/medicos.html" class="link-box">Pacientes</a>
-                <a href="/TPPOO-Clinica/src/front/pages/historico.html" class="link-box">Consultas</a>
-                <a href="/TPPOO-Clinica/src/front/pages/pacientes.html" class="link-box">Histórico de Atendimentos</a>
+                <a href="/src/front/pages/medicos.html" class="link-box">
+                    <i class="fas fa-user-md"></i>
+                    <span>Médicos</span>
+                </a>
+                <a href="/src/front/pages/pacientes.html" class="link-box">
+                    <i class="fas fa-user-injured"></i>
+                    <span>Pacientes</span>
+                </a>
+                <a href="/src/front/pages/consultas.html" class="link-box">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Consultas</span>
+                </a>
+                <a href="/src/front/pages/historico.html" class="link-box">
+                    <i class="fas fa-file-medical-alt"></i>
+                    <span>Histórico</span>
+                </a>
             </div>
         </div>
     </section>
-    
-    <!-- Footer -->
-    <footer>
+
+    <!-- Serviços -->
+    <section class="servicos" id="servicos">
         <div class="container">
-            <p>&copy; 2025 Minha Empresa. Todos os direitos reservados.</p>
+            <h2>Sobre o Sistema</h2>
+            <div class="cards">
+                <div class="card">
+                    <img src="/src/front/assets/img/add.png" alt="">
+                    <h3>Cadastro de Médicos e Pacientes</h3>
+                    <p>Gerencie profissionais da saúde e seus pacientes com facilidade.</p>
+                </div>
+                <div class="card">
+                    <img src="/src/front/assets/img/list.png" alt="">
+                    <h3>Agendamento de Consultas</h3>
+                    <p>Marque atendimentos com validação automática de horários disponíveis.</p>
+                </div>
+                <div class="card">
+                    <img src="/src/front/assets/img/time.png" alt="">
+                    <h3>Histórico de Atendimentos</h3>
+                    <p>Acompanhe o histórico completo de consultas e diagnósticos.</p>
+                </div>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="/src/front/assets/img/magnifying-glass.png" alt="">
+                    <h3>Interface Amigável</h3>
+                    <p>Navegação simples e intuitiva para todos os tipos de usuários.</p>
+                </div>
+                <div class="card">
+                    <img src="/src/front/assets/img/server.png" alt="">
+                    <h3>Integração com Banco de Dados</h3>
+                    <p>Armazenamento seguro e confiável de todas as informações do sistema.</p>
+                </div>
+            </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- Sobre -->
+    <section>
+        <div class="Sobre" id="Sobre">
+            <h2>Sobre o Projeto</h2>
+            <p>
+                Este projeto tem como objetivo o desenvolvimento de um sistema completo de gestão de consultas médicas
+                para uma clínica, utilizando os princípios da Programação Orientada a Objetos (POO).
+            </p>
+
+            <h3>Integrantes da Equipe</h3>
+            <div class="equipe">
+                <div class="membro">
+                    <img src="/src/front/assets/img/Bruno.jpeg" alt="Foto de Bruno Gustavo Rezende">
+                    <p>Bruno Gustavo Rezende</p>
+                </div>
+                <div class="membro">
+                    <img src="/src/front/assets/img/Caio.png" alt="Foto de Caio Henrique Queiroz dos Santos">
+                    <p>Caio Henrique Queiroz</p>
+                </div>
+                <div class="membro">
+                    <img src="/src/front/assets/img/Cleber.png" alt="Foto de Cleber Gomes Junior">
+                    <p>Cleber Gomes Junior</p>
+                </div>
+                <div class="membro">
+                    <img src="/src/front/assets/img/Eric.jpeg" alt="Foto de Eric Carvalho Pedro">
+                    <p>Eric Carvalho Pedro</p>
+                </div>
+
+                <div class="membro">
+                    <img src="/src/front/assets/img/Victor.png" alt="Foto de Victor Lucas de Ângela Martins">
+                    <p>Victor Lucas de Ângela</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <script>
+        fetch('components/header.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+
+        fetch('/src/front/components/footer.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
 </body>
 
 </html>

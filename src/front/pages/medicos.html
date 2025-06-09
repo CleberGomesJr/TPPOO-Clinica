@@ -1,11 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicos</title>
+    <title>Médicos</title>
+    <link rel="stylesheet" href="/src/front/assets/css/medicos.css">
 </head>
+
 <body>
-    
+    <div id="header"></div>
+
+    <h1>Lista de Médicos</h1>
+
+    <div class="acoes-medico">
+        <button id="adicionar-medico">Adicionar Médico</button>
+        <input type="text" id="pesquisar-medico" placeholder="Pesquisar médico...">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>CRM</th>
+                <th>Especialidade</th>
+                <th>CPF</th>
+                <th>Sexo</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-medicos">
+            <!-- Médicos fixos ou renderizados dinamicamente -->
+        </tbody>
+    </table>
+
+    <div id="footer"></div>
+
+    <div id="modal-medico" class="modal">
+        <div class="modal-content">
+            <h2>Adicionar Médico</h2>
+            <form id="form-medico">
+                <label>Nome:</label>
+                <input type="text" required>
+                <label>CRM:</label>
+                <input type="text" required>
+                <label>Especialidade:</label>
+                <input type="text" required>
+                <label>CPF:</label>
+                <input type="text" required>
+                <label>Sexo:</label>
+                <select required>
+                    <option value="">Selecione</option>
+                    <option>Masculino</option>
+                    <option>Feminino</option>
+                    <option>Outro</option>
+                </select>
+                <label>Data de Nascimento:</label>
+                <input type="date" required>
+                <label>Telefone:</label>
+                <input type="text" required>
+                <label>Email:</label>
+                <input type="email" required>
+                <div class="actions">
+                    <button type="button" id="cancelar-modal">Cancelar</button>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/src/front/assets/js/medico.js"></script>
 </body>
+
 </html>
