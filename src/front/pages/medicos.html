@@ -44,31 +44,40 @@
             <h2>Adicionar Médico</h2>
             <form id="form-medico">
                 <label>Nome:</label>
-                <input type="text" required>
+                <input type="text" name="nome" required>
+
                 <label>CRM:</label>
-                <input type="text" required>
+                <input type="text" name="crm" required>
+
                 <label>Especialidade:</label>
-                <input type="text" required>
+                <input type="text" name="especialidade" required>
+
                 <label>CPF:</label>
-                <input type="text" required>
+                <input type="text" name="cpf" required>
+
                 <label>Sexo:</label>
-                <select required>
+                <select name="sexo" required>
                     <option value="">Selecione</option>
                     <option>Masculino</option>
                     <option>Feminino</option>
                     <option>Outro</option>
                 </select>
+
                 <label>Data de Nascimento:</label>
-                <input type="date" required>
+                <input type="date" name="dataNascimento" required>
+
                 <label>Telefone:</label>
-                <input type="text" required>
+                <input type="text" name="numero" required>
+
                 <label>Email:</label>
-                <input type="email" required>
+                <input type="email" name="email" required>
+
                 <div class="actions">
                     <button type="button" id="cancelar-modal">Cancelar</button>
                     <button type="submit">Salvar</button>
                 </div>
             </form>
+
         </div>
     </div>
 
