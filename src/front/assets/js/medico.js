@@ -1,3 +1,4 @@
+// Carregar header e footer
 fetch('../components/header.html')
     .then(res => res.text())
     .then(data => document.getElementById('header').innerHTML = data);
@@ -6,116 +7,146 @@ fetch('../components/footer.html')
     .then(res => res.text())
     .then(data => document.getElementById('footer').innerHTML = data);
 
+// Variáveis principais
 const modal = document.getElementById('modal-medico');
 const btnAbrir = document.getElementById('adicionar-medico');
 const btnCancelar = document.getElementById('cancelar-modal');
 const form = document.getElementById('form-medico');
 const tabela = document.getElementById('tabela-medicos');
 
-// Exibe modal
+// Ao carregar a página, busca médicos e popula a tabela
+window.onload = () => {
+    carregarMedicos();
+};
+
+// Abrir modal
 btnAbrir.addEventListener('click', () => {
     modal.style.display = 'flex';
 });
 
-// Fecha modal
+// Fechar modal e resetar formulário
 btnCancelar.addEventListener('click', () => {
     modal.style.display = 'none';
     form.reset();
 });
 
-// Adiciona novo médico à tabela (simulado)
-// TEM QUE ALTERAR PARA IMPLEMENTAR A API
+// Enviar formulário para cadastrar médico
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const medico = {
-        nome: form.nome.value,
-        sexo: form.sexo.value,
-        cpf: form.cpf.value,
-        dataNascimento: form.dataNascimento.value,
-        email: form.email.value,
-        numero: form.numero.value,
+        nome: form.nome.value.trim(),
+        sexo: form.sexo.value.trim(),
+        cpf: form.cpf.value.trim(),
+        dataNascimento: new Date(form.dataNascimento.value).toISOString(),
+        email: form.email.value.trim(),
+        numero: form.numero.value.trim(),
         crm: parseInt(form.crm.value),
-        especialidade: form.especialidade.value
+        especialidade: form.especialidade.value.trim()
     };
+
+    console.log('Payload enviado:', JSON.stringify(medico));
 
     try {
         const response = await fetch('https://clinica-medica-api-dth7b4c7auencgbg.brazilsouth-01.azurewebsites.net/api/ClinicaMedica/medicos/cadastrar', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(medico)
         });
 
         if (!response.ok) {
-            throw new Error(`Erro: ${response.status}`);
+            const erroDetalhado = await response.text();
+            console.error('Erro detalhado da API:', erroDetalhado);
+            alert('Erro ao cadastrar médico: ' + erroDetalhado);
+            throw new Error(`Erro ${response.status}`);
         }
 
-        const novoMedico = await response.json();
-
-        // Adiciona novo médico à tabela
-        const novaLinha = document.createElement('tr');
-        novaLinha.innerHTML = `
-            <td>${novoMedico.nome}</td>
-            <td>${novoMedico.sexo}</td>
-            <td>${novoMedico.cpf}</td>
-            <td>${new Date(novoMedico.dataNascimento).toLocaleDateString()}</td>
-            <td>${novoMedico.email}</td>
-            <td>${novoMedico.numero}</td>
-            <td>${novoMedico.crm}</td>
-            <td>${novoMedico.especialidade}</td>
-            <td><button class="remover-btn">Remover</button></td>
-        `;
-        tabela.appendChild(novaLinha);
-
-        // Evento de remover
-        novaLinha.querySelector('.remover-btn').addEventListener('click', () => {
-            novaLinha.remove();
-            // Aqui pode adicionar o DELETE futuramente
-        });
+        const resultado = await response.text();
+        alert('Cadastro realizado: ' + resultado);
 
         modal.style.display = 'none';
         form.reset();
 
+        // Recarregar médicos para atualizar tabela
+        carregarMedicos();
+
     } catch (erro) {
         console.error('Erro ao cadastrar médico:', erro);
-        alert('Erro ao cadastrar médico. Verifique se a API está funcionando corretamente.');
+        alert('Falha no cadastro. Verifique os dados e tente novamente.');
     }
 });
 
+// Função para carregar médicos da API e mostrar na tabela
+async function carregarMedicos() {
+    try {
+        const response = await fetch('https://clinica-medica-api-dth7b4c7auencgbg.brazilsouth-01.azurewebsites.net/api/ClinicaMedica/medicos/listar');
 
+        if (!response.ok) {
+            const erroDetalhado = await response.text();
+            console.error('Erro ao listar médicos:', erroDetalhado);
+            alert('Erro ao carregar médicos: ' + erroDetalhado);
+            return;
+        }
 
-// Simular ação de remover médico
-function ativarRemocao() {
-    document.querySelectorAll('.remover-btn').forEach(button => {
-        button.addEventListener('click', async function () {
-            const id = this.getAttribute('data-id');
-            if (!confirm('Tem certeza que deseja excluir este médico?')) return;
+        const medicos = await response.json();
 
-            try {
-                const response = await fetch(`https://clinica-medica-api-dth7b4c7auencgbg.brazilsouth-01.azurewebsites.net/api/ClinicaMedica/medicos/${id}/apagar`, {
-                    method: 'DELETE'
-                });
+        tabela.innerHTML = ''; // limpa tabela antes de preencher
 
-                if (!response.ok) throw new Error(`Erro ${response.status}`);
+        medicos.forEach(medico => {
+            const tr = document.createElement('tr');
 
-                // Remove a linha da tabela
-                this.closest('tr').remove();
-            } catch (erro) {
-                console.error('Erro ao remover médico:', erro);
-                alert('Erro ao excluir médico.');
-            }
+            tr.innerHTML = `
+        <td>${medico.nome}</td>
+        <td>${medico.crm}</td>
+        <td>${medico.especialidade}</td>
+        <td>
+            <button class="remover-btn" data-id="${medico.crm}">Excluir</button>
+        </td>
+    `;
+
+            tabela.appendChild(tr);
+
+            const btnRemover = tr.querySelector('.remover-btn');
+            btnRemover.addEventListener('click', () => {
+                const id = btnRemover.getAttribute('data-id');
+                removerMedico(id, tr);
+            });
         });
-    });
+
+    } catch (erro) {
+        console.error('Falha ao buscar médicos:', erro);
+        alert('Erro inesperado ao buscar médicos.');
+    }
 }
 
-// Filtro básico de pesquisa
-document.getElementById('pesquisar-medico').addEventListener('input', function () {
-    const filtro = this.value.toLowerCase();
-    const linhas = document.querySelectorAll('tbody tr');
-    linhas.forEach(linha => {
-        const texto = linha.innerText.toLowerCase();
-        linha.style.display = texto.includes(filtro) ? '' : 'none';
-    });
-});
+
+
+// Função para ativar evento nos botões de remover
+async function removerMedico(id, linhaTabela) {
+    if (!id) {
+        alert('ID do médico não encontrado.');
+        return;
+    }
+
+    if (!confirm('Tem certeza que deseja excluir este médico?')) return;
+
+    try {
+        const response = await fetch(`https://clinica-medica-api-dth7b4c7auencgbg.brazilsouth-01.azurewebsites.net/api/ClinicaMedica/medicos/${id}/apagar`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) {
+            const erroDetalhado = await response.json();
+            alert('Erro ao excluir médico: ' + JSON.stringify(erroDetalhado));
+            throw new Error(`Erro ${response.status}`);
+        }
+
+        linhaTabela.remove();
+        alert('Médico removido com sucesso.');
+
+    } catch (erro) {
+        console.error('Erro ao remover médico:', erro);
+        alert('Falha ao excluir médico. Tente novamente.');
+    }
+}
+
