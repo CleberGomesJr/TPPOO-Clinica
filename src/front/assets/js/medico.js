@@ -96,13 +96,13 @@ async function carregarMedicos() {
             const tr = document.createElement('tr');
 
             tr.innerHTML = `
-        <td>${medico.nome}</td>
-        <td>${medico.crm}</td>
-        <td>${medico.especialidade}</td>
-        <td>
-            <button class="remover-btn" data-id="${medico.crm}">Excluir</button>
-        </td>
-    `;
+            <td>${medico.nome}</td>
+            <td>${medico.crm}</td>
+            <td>${medico.especialidade}</td>
+            <td>
+                <button class="remover-btn" data-id="${medico.crm}">Excluir</button>
+            </td>
+        `;
 
             tabela.appendChild(tr);
 
@@ -118,8 +118,6 @@ async function carregarMedicos() {
         alert('Erro inesperado ao buscar médicos.');
     }
 }
-
-
 
 // Função para ativar evento nos botões de remover
 async function removerMedico(id, linhaTabela) {

@@ -20,48 +20,57 @@
     <table>
         <thead>
             <tr>
-                <th>Número Protocolo</th>
-                <th>Data</th>
-                <th>Status</th>
-                <th>Nº Carteirinha</th>
+                <th>ID</th>
+                <th>Médico ID</th>
+                <th>Paciente ID</th>
                 <th>CRM</th>
+                <th>Nº Carteirinha</th>
+                <th>Data Consulta</th>
+                <th>Status ID</th>
+                <th>Descrição</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody id="tabela-consultas">
-            <!-- Médicos fixos ou renderizados dinamicamente -->
+            <!-- Consultas serão renderizadas aqui -->
         </tbody>
     </table>
 
     <div id="footer"></div>
 
     <div id="modal-consulta" class="modal">
-    <div class="modal-content">
-        <h2>Agendar Consulta</h2>
-        <form id="form-consulta">
-            <label>Número Protocolo:</label>
-            <input type="text" id="protocolo" required>
+        <div class="modal-content">
+            <h2>Agendar Consulta</h2>
+            <form id="form-consulta">
 
-            <label>CRM:</label>
-            <input type="text" id="crm" required>
+                <label for="medicoId">Médico ID:</label>
+                <input type="number" name="medicoId" required>
 
-            <label>Status:</label>
-            <input type="text" id="status" required>
+                <label for="pacienteId">Paciente ID:</label>
+                <input type="number" name="pacienteId" required>
 
-            <label>CPF:</label>
-            <input type="text" id="cpf" required>
+                <label for="crm">CRM:</label>
+                <input type="number" name="crm" required>
 
-            <label>Data:</label>
-            <input type="date" id="dataConsulta" required>
+                <label for="numeroCarteirinha">Número da Carteirinha:</label>
+                <input type="number" name="numeroCarteirinha" required>
 
-            <div class="actions">
-                <button type="button" id="cancelar-modal">Cancelar</button>
-                <button type="submit">Salvar</button>
-            </div>
-        </form>
+                <label for="statusConsultaId">Status Consulta ID:</label>
+                <input type="number" name="statusConsultaId" required>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" name="descricao" required>
+
+                <label for="dataConsulta">Data da Consulta:</label>
+                <input type="datetime-local" name="dataConsulta" required>
+
+                <div class="actions">
+                    <button type="button" id="cancelar-modal">Cancelar</button>
+                    <button type="submit">Salvar</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
 
     <script src="/src/front/assets/js/consultas.js"></script>
 </body>
